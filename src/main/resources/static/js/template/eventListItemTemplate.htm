@@ -1,0 +1,8 @@
+<td><%= event.get('id') %></td>
+<td><a href="#/events/<%= event.get('id') %>"><%= event.get('title') %></a></td>
+<td><%= event.get('start') %></td>
+<td><%= event.get('end') %></td>
+<td><%= event.get('owner') %></td>
+<td><%= event.get('status') %></td>
+<!--<td><a id="eventClose-hl-<%= event.get('id') %>" data-eventId="<%= event.get('id') %>" class="glyphicon glyphicon-remove-circle eventClose" href="javascript:void(0);"></a>&nbsp;&nbsp;<a id="eventDelete-hl-<%= event.get('id') %>" data-eventId="<%= event.get('id') %>" class="glyphicon glyphicon-remove eventDelete" href="javascript:void(0);"></a></td>-->
+<td><a id="eventClose-hl-<%= event.get('id') %>" data-eventId="<%= event.get('id') %>" class="eventClose" href="javascript:void(0);">x</a>&nbsp;&nbsp;<a id="eventDelete-hl-<%= event.get('id') %>" data-eventId="<%= event.get('id') %>" class="eventDelete" href="javascript:void(0);">X</a></td>
