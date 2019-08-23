@@ -1,5 +1,4 @@
-﻿
-requirejs.config({
+﻿requirejs.config({
 	baseUrl : "js",
 	map : {
 		"*" : {

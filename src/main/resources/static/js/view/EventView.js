@@ -1,4 +1,3 @@
-
 define([ 'jquery', 'underscore', 'backbone', 'text!template/eventTemplate.htm' ], function ($, _, Backbone, eventTemplate) {
 	var EventView = Backbone.View.extend({
 		initialize : function (options) {

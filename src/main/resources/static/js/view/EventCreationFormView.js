@@ -1,4 +1,3 @@
-
 define([ 'jquery', 'underscore', 'backbone', 'collection/EventListCollection', 'text!template/eventCreationFormTemplate.htm' ], function ($, _, Backbone, EventListCollection, eventCreationFormTemplate) {
 	var EventCreationFormView = Backbone.View.extend({
 		initialize : function (options) {

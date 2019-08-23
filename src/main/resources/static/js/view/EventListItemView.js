@@ -1,4 +1,3 @@
-
 define([ 'jquery', 'underscore', 'backbone', 'text!template/eventListItemTemplate.htm' ], function ($, _, Backbone, eventListItemTemplate) {
 	var EventListItemView = Backbone.View.extend({
 		tagName : "tr",

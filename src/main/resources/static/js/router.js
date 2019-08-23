@@ -1,4 +1,3 @@
-
 define([ 'jquery', 'underscore', 'backbone', 'collection/EventListCollection', 'view/EventListView', 'view/EventView', 'view/EventCreationFormView' ], function ($, _, Backbone, EventListCollection, EventListView, EventView, EventCreationFormView) {
 	var AppRouter = Backbone.Router.extend({
 		initialize : function (options) {

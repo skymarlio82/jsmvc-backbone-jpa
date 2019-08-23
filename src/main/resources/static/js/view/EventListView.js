@@ -1,4 +1,3 @@
-
 define([ 'jquery', 'underscore', 'backbone', 'view/EventListItemView', 'text!template/eventListTemplate.htm' ], function ($, _, Backbone, EventListItemView, eventListTemplate) {
 	var EventListView = Backbone.View.extend({
 		initialize : function (options) {
