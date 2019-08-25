@@ -1,21 +1,21 @@
 
-package com.spa.demo.mvc.domain.service;
+package com.spa.demo.domain.service;
 
 import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.spa.demo.mvc.data.dao.EventDao;
-import com.spa.demo.mvc.data.entity.Event;
+import com.spa.demo.data.dao.EventDao;
+import com.spa.demo.data.entity.Event;
 
 @Service("eventService")
-//@CacheConfig(cacheNames="eventServiceCache")
 public class EventService {
 
 	private static final Logger log = LoggerFactory.getLogger(EventService.class);
@@ -24,7 +24,7 @@ public class EventService {
 	private EventDao eventDao = null;
 
 	@Transactional(readOnly=true)
-//	@Cacheable
+	@Cacheable(value="readAllEventsCache")
 	public List<Event> readAllEvents() {
 		List<Event> eventList = eventDao.findAll();
 		log.debug("getAllEvents : size = " + eventList.size());
@@ -32,7 +32,6 @@ public class EventService {
 	}
 
 	@Transactional(readOnly=true)
-//	@Cacheable
 	public List<Event> readEventsByCategory(String category) {
 		List<Event> res = null;
 		if (category.equals("all")) {
@@ -45,13 +44,11 @@ public class EventService {
 	}
 
 	@Transactional(readOnly=true)
-//	@Cacheable
 	public Event readEventDetailByTitle(String title) {
 		return eventDao.findByTitle(title);
 	}
 
 	@Transactional(readOnly=false, propagation=Propagation.REQUIRED, isolation=Isolation.DEFAULT)
-//	@CacheEvict(allEntries=true)
 	public Event updateEvent(Event event) {
 		log.debug("Before updating Event record from web request : " + event);
 		eventDao.saveAndFlush(event);
@@ -60,7 +57,6 @@ public class EventService {
 	}
 
 	@Transactional(readOnly=false, propagation=Propagation.REQUIRED, isolation=Isolation.DEFAULT)
-//	@CacheEvict(allEntries=true)
 	public Event createEvent(Event event) {
 		log.debug("Before creating Event record from web request : " + event);
 		event.setStatus("Opening");
@@ -70,9 +66,8 @@ public class EventService {
 	}
 
 	@Transactional(readOnly=false, propagation=Propagation.REQUIRED, isolation=Isolation.DEFAULT)
-//	@CacheEvict(allEntries=true)
 	public Event deleteEvent(int id) {
-		Event event = eventDao.findOne(id);
+		Event event = eventDao.getOne(id);
 		log.debug("Before deleting Event record in DB : " + event);
 		eventDao.delete(event);
 		log.debug("After being deleted Event record from DB : " + event);
@@ -80,7 +75,6 @@ public class EventService {
 	}
 
 	@Transactional(readOnly=false, propagation=Propagation.REQUIRED, isolation=Isolation.DEFAULT)
-//	@CacheEvict(allEntries=true)
 	public void initData() {
 		log.info("start to initialize DB ...");
 		eventDao.save(new Event(0, "UI Issue", "Checkbox not pop up", "01/01/2017", "01/02/2017", "Tom", "Opening", false));

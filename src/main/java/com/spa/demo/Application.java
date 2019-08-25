@@ -1,30 +1,20 @@
 
-package com.spa.demo.mvc;
+package com.spa.demo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-import com.spa.demo.mvc.domain.service.EventService;
+import com.spa.demo.domain.service.EventService;
 
 @SpringBootApplication
-@Configuration
-@EnableAutoConfiguration
-@ComponentScan("com.spa.demo.mvc")
-@EnableJpaRepositories("com.spa.demo.mvc.data.dao")
 public class Application {
 
-	private static final Class<Application> applicationClass = Application.class;
-
 	public static void main(String[] args) {
-		SpringApplication.run(applicationClass, args);
+		SpringApplication.run(Application.class, args);
 	}
 
 	@Autowired
