@@ -1,5 +1,5 @@
 
-package com.spa.demo.mvc.rest.model;
+package com.spa.demo.rest.model;
 
 import java.util.HashMap;
 import java.util.Map;

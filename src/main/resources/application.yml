@@ -1,8 +1,5 @@
 server:
   port: 8080
-security:
-  basic:
-    enabled: false
 spring:
   h2:
     console:
@@ -13,8 +10,6 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: create-drop
-      naming:
-        strategy: org.hibernate.cfg.ImprovedNamingStrategy
     properties:
       hibernate:
         dialect: org.hibernate.dialect.H2Dialect
@@ -28,5 +23,10 @@ spring:
       maximum-pool-size: 10
       minimum-idle: 2
       connection-timeout: 60000
-  jmx:
-    enabled: false
+  cache:
+    jcache:
+      config: classpath:ehcache.xml
+logging:
+  level:
+    org.springframework: ERROR
+    com.spa.demo: DEBUG

@@ -1,5 +1,5 @@
 
-package com.spa.demo.mvc.rest.controller;
+package com.spa.demo.rest.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.spa.demo.mvc.rest.model.ErrRtnResult;
+import com.spa.demo.rest.model.ErrRtnResult;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
