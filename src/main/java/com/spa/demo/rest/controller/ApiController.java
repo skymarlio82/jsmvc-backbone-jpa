@@ -3,8 +3,6 @@ package com.spa.demo.rest.controller;
 
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -23,13 +21,13 @@ import com.spa.demo.domain.service.EventService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @RestController
 @RequestMapping("/api")
 @Api(tags={"api-main"})
 public class ApiController {
-
-	private static final Logger log = LoggerFactory.getLogger(ApiController.class);
 
 	@Autowired
 	private EventService eventService = null;
