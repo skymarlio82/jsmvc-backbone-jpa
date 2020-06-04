@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.spa.demo.rest.model.ErrRtnResult;
+import com.spa.demo.rest.vo.ErrRtnResult;
 
 import lombok.extern.slf4j.Slf4j;
 
