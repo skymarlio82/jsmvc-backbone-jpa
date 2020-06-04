@@ -14,14 +14,11 @@ public class Application {
 		SpringApplication.run(Application.class, args);
 	}
 
-//	@Autowired
-//	private EventService eventService = null;
-
 	@Bean
 	public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
 		System.out.println("java.io.tmpdir = " + System.getProperty("java.io.tmpdir"));
 		return args -> {
-//			eventService.initData();
+			
 		};
 	}
 }

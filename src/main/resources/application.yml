@@ -19,12 +19,13 @@ spring:
     username: sa
     password: 
     hikari:
-      pool-name: simpleCP
+      pool-name: hikariCP
       maximum-pool-size: 10
       minimum-idle: 2
       connection-timeout: 60000
     schema: classpath*:sql/schema.sql
     data: classpath*:sql/data.sql
+  jackson:    serialization:      fail-on-empty-beans: false
 #  cache:
 #    jcache:
 #      config: classpath:ehcache.xml

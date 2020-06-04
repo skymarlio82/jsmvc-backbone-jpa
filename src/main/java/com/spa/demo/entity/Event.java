@@ -1,9 +1,6 @@
 
 package com.spa.demo.entity;
 
-import java.io.Serializable;
-
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,43 +15,34 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name="event")
-public class Event implements Serializable {
-
-	private static final long serialVersionUID = 2572684341269567170L;
+public class Event {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id")
 	private int id = 0;
 
 	@NotNull
 	@Size(min=1, max=40)
-	@Column(name="title")
 	private String title = null;
 
 	@NotNull
 	@Size(min=1, max=400)
-	@Column(name="description")
 	private String description = null;
 
 	@NotNull
 	@Size(min=1, max=20)
-	@Column(name="start")
 	private String start = null;
 
 	@NotNull
 	@Size(min=1, max=20)
-	@Column(name="end")
 	private String end = null;
 
 	@NotNull
 	@Size(min=1, max=20)
-	@Column(name="owner")
 	private String owner = null;
 
 	@NotNull
 	@Size(min=1, max=10)
-	@Column(name="status")
 	private String status = null;
 
 	@Transient
