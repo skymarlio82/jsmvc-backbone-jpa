@@ -1,5 +1,5 @@
 
-package com.spa.demo.rest.controller;
+package com.spa.demo.api.controller;
 
 import java.util.List;
 

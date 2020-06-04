@@ -1,5 +1,5 @@
 
-package com.spa.demo.rest.controller;
+package com.spa.demo.api.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.spa.demo.rest.vo.ErrRtnResult;
+import com.spa.demo.api.vo.ErrRtnResult;
 
 import lombok.extern.slf4j.Slf4j;
 
