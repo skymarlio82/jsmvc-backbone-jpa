@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 
-import com.spa.demo.domain.service.EventService;
+import com.spa.demo.service.EventService;
 
 @SpringBootApplication
 public class Application {

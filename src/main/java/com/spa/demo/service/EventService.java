@@ -1,5 +1,5 @@
 
-package com.spa.demo.domain.service;
+package com.spa.demo.service;
 
 import java.util.List;
 
@@ -10,8 +10,8 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.spa.demo.data.dao.EventDao;
-import com.spa.demo.data.entity.Event;
+import com.spa.demo.entity.Event;
+import com.spa.demo.repository.EventDao;
 
 import lombok.extern.slf4j.Slf4j;
 

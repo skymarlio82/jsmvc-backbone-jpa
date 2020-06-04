@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.spa.demo.data.entity.Event;
-import com.spa.demo.domain.service.EventService;
+import com.spa.demo.entity.Event;
+import com.spa.demo.service.EventService;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

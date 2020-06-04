@@ -1,5 +1,5 @@
 
-package com.spa.demo.data.entity;
+package com.spa.demo.entity;
 
 import java.io.Serializable;
 

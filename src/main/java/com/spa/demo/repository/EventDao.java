@@ -1,5 +1,5 @@
 
-package com.spa.demo.data.dao;
+package com.spa.demo.repository;
 
 import java.util.List;
 
@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.spa.demo.data.entity.Event;
+import com.spa.demo.entity.Event;
 
 @Repository("eventDao")
 public interface EventDao extends JpaRepository<Event, Integer> {
