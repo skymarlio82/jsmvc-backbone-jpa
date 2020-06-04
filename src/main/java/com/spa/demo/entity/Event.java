@@ -17,44 +17,44 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name="EVENTS")
+@Table(name="event")
 public class Event implements Serializable {
 
 	private static final long serialVersionUID = 2572684341269567170L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="ID")
+	@Column(name="id")
 	private int id = 0;
 
 	@NotNull
 	@Size(min=1, max=40)
-	@Column(name="TITLE")
+	@Column(name="title")
 	private String title = null;
 
 	@NotNull
 	@Size(min=1, max=400)
-	@Column(name="DESCRIPTION")
+	@Column(name="description")
 	private String description = null;
 
 	@NotNull
 	@Size(min=1, max=20)
-	@Column(name="START")
+	@Column(name="start")
 	private String start = null;
 
 	@NotNull
 	@Size(min=1, max=20)
-	@Column(name="END")
+	@Column(name="end")
 	private String end = null;
 
 	@NotNull
 	@Size(min=1, max=20)
-	@Column(name="OWNER")
+	@Column(name="owner")
 	private String owner = null;
 
 	@NotNull
 	@Size(min=1, max=10)
-	@Column(name="STATUS")
+	@Column(name="status")
 	private String status = null;
 
 	@Transient
@@ -64,7 +64,8 @@ public class Event implements Serializable {
 		
 	}
 
-	public Event(int id, String title, String description, String start, String end, String owner, String status, boolean formEditable) {
+	public Event(int id, String title, String description, String start, String end, String owner, String status,
+		boolean formEditable) {
 		this.id = id;
 		this.title = title;
 		this.description = description;

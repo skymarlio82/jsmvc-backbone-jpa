@@ -4,26 +4,25 @@ package com.spa.demo.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.spa.demo.entity.Event;
-import com.spa.demo.repository.EventDao;
+import com.spa.demo.repository.EventRepo;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-@Service("eventService")
+@Service
 public class EventService {
 
 	@Autowired
-	private EventDao eventDao = null;
+	private EventRepo eventDao = null;
 
 	@Transactional(readOnly=true)
-	@Cacheable(value="readAllEventsCache")
+//	@Cacheable(value="readAllEventsCache")
 	public List<Event> readAllEvents() {
 		List<Event> eventList = eventDao.findAll();
 		log.debug("getAllEvents : size = " + eventList.size());

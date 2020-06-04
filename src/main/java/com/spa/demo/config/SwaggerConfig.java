@@ -18,10 +18,22 @@ public class SwaggerConfig {
 
 	@Bean
 	public Docket api() {
-		return new Docket(DocumentationType.SWAGGER_2).select().apis(RequestHandlerSelectors.any()).paths(PathSelectors.any()).build().apiInfo(apiInfo());
+		return new Docket(DocumentationType.SWAGGER_2)
+			.select()
+			.apis(RequestHandlerSelectors.any())
+			.paths(PathSelectors.any())
+			.build()
+			.apiInfo(apiInfo());
 	}
 
 	private ApiInfo apiInfo() {
-		return new ApiInfoBuilder().title("Rest for jsmvc-backbone-jpa").description("Rest for jsmvc-backbone-jpa").termsOfServiceUrl("github").license("Apache Foundation").licenseUrl("").version("1.0").build();
+		return new ApiInfoBuilder()
+			.title("Rest for jsmvc-backbone-jpa")
+			.description("Rest for jsmvc-backbone-jpa")
+			.termsOfServiceUrl("github")
+			.license("Apache Foundation")
+			.licenseUrl("")
+			.version("1.0")
+			.build();
 	}
 }

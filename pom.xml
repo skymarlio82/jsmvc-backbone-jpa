@@ -2,11 +2,16 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<name>jsmvc-backbone-jpa</name>
 	<groupId>com.demo.spa</groupId>
 	<artifactId>jsmvc-backbone-jpa</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<!-- Inherit defaults libs from Spring Boot -->
+	<packaging>jar</packaging>
+	<name>jsmvc-backbone-jpa</name>
+	<description>jsmvc-backbone-jpa</description>
+	<properties>
+		<java.version>1.8</java.version>
+		<swagger.version>2.6.1</swagger.version>
+	</properties>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
@@ -15,14 +20,8 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-rest</artifactId>
-		</dependency>
-		<!-- Add typical dependencies for web application -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-		<!-- Add JPA dependencies -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -33,23 +32,13 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-		<!-- Connection Pool : Hikari -->
-		<dependency>
-			<groupId>com.zaxxer</groupId>
-			<artifactId>HikariCP</artifactId>
-		</dependency>
 		<!-- H2 for In-Memory -->
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
-		</dependency>
-		<!-- HSQL for JDBC Runtime -->
-		<dependency>
-			<groupId>org.hsqldb</groupId>
-			<artifactId>hsqldb</artifactId>
 			<scope>runtime</scope>
 		</dependency>
-		<dependency>
+		<!-- <dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-cache</artifactId>
 		</dependency>
@@ -60,28 +49,16 @@
 		<dependency>
 			<groupId>javax.cache</groupId>
 			<artifactId>cache-api</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.jayway.jsonpath</groupId>
-			<artifactId>json-path</artifactId>
-			<scope>test</scope>
-		</dependency>
+		</dependency> -->
 		<dependency>
 			<groupId>io.springfox</groupId>
 			<artifactId>springfox-swagger-ui</artifactId>
-			<version>2.6.1</version>
-			<scope>compile</scope>
+			<version>${swagger.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>io.springfox</groupId>
 			<artifactId>springfox-swagger2</artifactId>
-			<version>2.6.1</version>
-			<scope>compile</scope>
+			<version>${swagger.version}</version>
 		</dependency>
 		<dependency>
 		    <groupId>org.projectlombok</groupId>
@@ -89,18 +66,7 @@
 		    <scope>provided</scope>
 		</dependency>
 	</dependencies>
-	<properties>
-		<java.version>1.8</java.version>
-		<start-class>com.spa.demo.Application</start-class>
-	</properties>
 	<build>
-		<resources>
-			<resource>
-				<directory>src/main/resources</directory>
-				<filtering>true</filtering>
-			</resource>
-		</resources>
-		<!-- Package as an executable jar for Spring Boot Application -->
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

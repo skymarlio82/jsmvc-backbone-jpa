@@ -9,10 +9,10 @@ import org.springframework.stereotype.Repository;
 
 import com.spa.demo.entity.Event;
 
-@Repository("eventDao")
-public interface EventDao extends JpaRepository<Event, Integer> {
+@Repository
+public interface EventRepo extends JpaRepository<Event, Integer> {
 
-	@Query("from Event e")
+	@Query("from Event e order by e.id")
 	List<Event> findAll();
 	List<Event> findByStatus(String status);
 	Event findByTitle(String title);
