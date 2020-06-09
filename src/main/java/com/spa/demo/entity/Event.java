@@ -64,8 +64,7 @@ public class Event implements Serializable {
 		
 	}
 
-	public Event(int id, String title, String description, String start, String end, String owner, String status, 
-		boolean formEditable) {
+	public Event(int id, String title, String description, String start, String end, String owner, String status, boolean formEditable) {
 		this.id = id;
 		this.title = title;
 		this.description = description;

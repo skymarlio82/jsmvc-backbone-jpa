@@ -1,5 +1,5 @@
 
-package com.spa.demo.rest.model;
+package com.spa.demo.api.vo;
 
 import java.util.HashMap;
 import java.util.Map;

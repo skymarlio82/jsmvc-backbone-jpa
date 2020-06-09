@@ -9,7 +9,8 @@ spring:
     database: h2
     show-sql: true
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: none
+      naming:        physical-strategy: com.spa.demo.model.JpaNamingStrategy
     properties:
       hibernate:
         dialect: org.hibernate.dialect.H2Dialect
@@ -19,14 +20,17 @@ spring:
     username: sa
     password: 
     hikari:
-      pool-name: simpleCP
+      pool-name: hikariCP
       maximum-pool-size: 10
       minimum-idle: 2
       connection-timeout: 60000
-  cache:
-    jcache:
-      config: classpath:ehcache.xml
+    schema: classpath*:sql/schema.sql
+    data: classpath*:sql/data.sql
+  jackson:    serialization:      fail-on-empty-beans: false
+#  cache:
+#    jcache:
+#      config: classpath:ehcache.xml
 logging:
   level:
-    org.springframework: ERROR
+    org.springframework: INFO
     com.spa.demo: DEBUG
