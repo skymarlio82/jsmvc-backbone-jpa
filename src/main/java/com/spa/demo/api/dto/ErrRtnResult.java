@@ -1,5 +1,5 @@
 
-package com.spa.demo.api.vo;
+package com.spa.demo.api.dto;
 
 import java.util.HashMap;
 import java.util.Map;
