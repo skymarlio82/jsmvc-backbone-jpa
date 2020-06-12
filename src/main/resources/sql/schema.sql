@@ -1,3 +1,7 @@
+
+--
+-- table : bb_event_tbl
+--
 CREATE TABLE bb_event_tbl (
 	id INT NOT NULL AUTO_INCREMENT, 
 	title VARCHAR(40) NOT NULL, 
