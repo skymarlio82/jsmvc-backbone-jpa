@@ -71,13 +71,4 @@ public class EventService {
 		log.debug("After being deleted Event record from DB : " + event);
 		return event;
 	}
-
-	@Transactional(readOnly=false, propagation=Propagation.REQUIRED, isolation=Isolation.DEFAULT)
-	public void initData() {
-		log.info("start to initialize DB ...");
-		eventDao.save(new Event(0, "UI Issue", "Checkbox not pop up", "01/01/2017", "01/02/2017", "Tom", "Opening", false));
-		eventDao.save(new Event(0, "SQL Statement Error", "Select syntax wrong", "02/01/2017", "02/02/2017", "Jim", "Opening", false));
-		eventDao.save(new Event(0, "Spring AOP No Dependency", "JAR lib missed", "04/01/2017", "04/02/2017", "Bob", "Opening", false));
-		eventDao.save(new Event(0, "Java Null Point Error", "Java Object not found", "03/01/2017", "03/02/2017", "Joe", "Opening", false));
-	}
 }
