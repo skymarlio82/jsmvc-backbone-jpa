@@ -1,8 +1,7 @@
-
 --
 -- table : bb_event_tbl
 --
-CREATE TABLE bb_event_tbl (
+CREATE TABLE event (
 	id INT NOT NULL AUTO_INCREMENT, 
 	title VARCHAR(40) NOT NULL, 
 	description VARCHAR(400) NOT NULL, 

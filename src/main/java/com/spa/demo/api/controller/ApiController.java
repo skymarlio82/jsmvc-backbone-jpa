@@ -1,8 +1,9 @@
 
-package com.spa.demo.rest.controller;
+package com.spa.demo.api.controller;
 
 import java.util.List;
 
+import com.spa.demo.service.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -15,8 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.spa.demo.data.entity.Event;
-import com.spa.demo.domain.service.EventService;
+import com.spa.demo.entity.Event;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

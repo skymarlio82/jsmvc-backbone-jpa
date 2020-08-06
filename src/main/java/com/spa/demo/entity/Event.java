@@ -1,5 +1,5 @@
 
-package com.spa.demo.data.entity;
+package com.spa.demo.entity;
 
 import java.io.Serializable;
 
@@ -17,7 +17,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name="EVENTS")
+@Table(name="EVENT")
 public class Event implements Serializable {
 
 	private static final long serialVersionUID = 2572684341269567170L;
