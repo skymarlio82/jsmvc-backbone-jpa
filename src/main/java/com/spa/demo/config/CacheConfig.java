@@ -1,4 +1,3 @@
-
 package com.spa.demo.config;
 
 //@Configuration
