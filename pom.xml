@@ -11,7 +11,7 @@
     <properties>
         <java.version>1.8</java.version>
         <swagger.version>2.6.1</swagger.version>
-        <mysql.version>5.1.46</mysql.version>
+        <mysql.version>8.0.16</mysql.version>
         <plumelog.version>3.1</plumelog.version>
     </properties>
     <parent>
