@@ -12,6 +12,7 @@
         <java.version>1.8</java.version>
         <swagger.version>2.6.1</swagger.version>
         <mysql.version>5.1.46</mysql.version>
+        <plumelog.version>3.1</plumelog.version>
     </properties>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -78,7 +79,30 @@
         <dependency>
             <groupId>com.plumelog</groupId>
             <artifactId>plumelog-logback</artifactId>
-            <version>3.1</version>
+            <version>${plumelog.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.plumelog</groupId>
+            <artifactId>plumelog-trace</artifactId>
+            <version>${plumelog.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+            <exclusions>
+                <exclusion>
+                    <artifactId>logback-classic</artifactId>
+                    <groupId>ch.qos.logback</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>spring-boot-starter-logging</artifactId>
+                    <groupId>org.springframework.boot</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>log4j-to-slf4j</artifactId>
+                    <groupId>org.apache.logging.log4j</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
     <build>

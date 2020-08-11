@@ -1,5 +1,6 @@
 package com.spa.demo.service;
 
+import com.plumelog.trace.annotation.Trace;
 import com.spa.demo.entity.Event;
 import com.spa.demo.repository.EventRepo;
 import org.slf4j.Logger;
@@ -19,11 +20,12 @@ public class EventService {
         this.eventRepo = eventRepo;
     }
 
+    @Trace
     @Transactional(readOnly = true)
 //	@Cacheable(value="readAllEventsCache")
     public List<Event> readAllEvents() {
         List<Event> eventList = eventRepo.findAll();
-        logger.debug("getAllEvents : size = {}", eventList.size());
+        logger.info("getAllEvents : size = {}", eventList.size());
         return eventList;
     }
 
@@ -35,7 +37,7 @@ public class EventService {
         } else {
             res = eventRepo.findByStatus(category);
         }
-        logger.debug("getEventsByCategory : category = {}, size = {}", category, res.size());
+        logger.info("getEventsByCategory : category = {}, size = {}", category, res.size());
         return res;
     }
 
@@ -46,27 +48,27 @@ public class EventService {
 
     @Transactional
     public Event updateEvent(Event event) {
-        logger.debug("Before updating Event record from web request : {}", event);
+        logger.info("Before updating Event record from web request : {}", event);
         eventRepo.saveAndFlush(event);
-        logger.debug("After being updated Event record into DB : {}", event);
+        logger.info("After being updated Event record into DB : {}", event);
         return event;
     }
 
     @Transactional
     public Event createEvent(Event event) {
-        logger.debug("Before creating Event record from web request : {}", event);
+        logger.info("Before creating Event record from web request : {}", event);
         event.setStatus("Opening");
         eventRepo.save(event);
-        logger.debug("After being created Event record into DB : {}", event);
+        logger.info("After being created Event record into DB : {}", event);
         return event;
     }
 
     @Transactional
     public Event deleteEvent(int id) {
         Event event = eventRepo.getOne(id);
-        logger.debug("Before deleting Event record in DB : {}", event);
+        logger.info("Before deleting Event record in DB : {}", event);
         eventRepo.delete(event);
-        logger.debug("After being deleted Event record from DB : {}", event);
+        logger.info("After being deleted Event record from DB : {}", event);
         return event;
     }
 }

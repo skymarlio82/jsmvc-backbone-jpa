@@ -19,7 +19,7 @@ public class Application {
     @Bean
     public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
         return args -> {
-            logger.debug("java.io.tmpdir = {}", System.getProperty("java.io.tmpdir"));
+            logger.info("java.io.tmpdir = {}", System.getProperty("java.io.tmpdir"));
         };
     }
 }

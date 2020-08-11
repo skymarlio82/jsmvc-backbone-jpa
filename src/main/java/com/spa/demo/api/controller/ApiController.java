@@ -1,5 +1,6 @@
 package com.spa.demo.api.controller;
 
+import com.plumelog.trace.annotation.Trace;
 import com.spa.demo.entity.Event;
 import com.spa.demo.service.EventService;
 import io.swagger.annotations.Api;
@@ -33,12 +34,13 @@ public class ApiController {
         this.eventService = eventService;
     }
 
+    @Trace
     @GetMapping("/events")
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
     @ApiOperation(value = "Get all the event entities.", notes = "Get all the event entities.")
     public List<Event> getAllEvents() {
-        logger.debug("readAllEvents() is calling ...");
+        logger.info("readAllEvents() is calling ...");
         return eventService.readAllEvents();
     }
 
@@ -48,7 +50,7 @@ public class ApiController {
     @ApiOperation(value = "Get the event entities by category.", notes = "Get the event entities by category.")
     public List<Event> getEventsByCategory(
         @ApiParam(value = "the event's category (i.e., all, Opening, Closed)", required = true) String category) {
-        logger.debug("readEventsByCategory() is calling ...");
+        logger.info("readEventsByCategory() is calling ...");
         return eventService.readEventsByCategory(category);
     }
 

@@ -14,14 +14,14 @@
         </encoder>
     </appender>
     <appender name="plumelog" class="com.plumelog.logback.appender.RedisAppender">
-        <appName>plumelog</appName>
+        <appName>plumelog-sb-jsmvc-spa</appName>
         <redisHost>127.0.0.1</redisHost>
         <redisAuth>pass1234</redisAuth>
         <redisPort>6379</redisPort>
         <runModel>2</runModel>
     </appender>
     <springProfile name="prd">
-        <root level="DEBUG">
+        <root level="INFO">
             <appender-ref ref="CONSOLE"/>
             <appender-ref ref="plumelog"/>
         </root>
