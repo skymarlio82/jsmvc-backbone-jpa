@@ -1,43 +1,16 @@
 server:
   port: 8080
 spring:
-#  h2:
-#    console:
-#      enabled: true
-#      path: /h2-console
-  jpa:
-#    database: h2
-    database: mysql
-    show-sql: true
-    hibernate:
-      ddl-auto: none
-#      naming:
-#        physical-strategy: com.spa.demo.model.JpaNamingStrategy
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.MySQLDialect
-  datasource:
-#    driver-class-name: org.h2.Driver
-#    url: jdbc:h2:mem:testdb;MODE=MySQL;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
-    driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://106.14.217.154:3306/testdb?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&allowPublicKeyRetrieval=true&verifyServerCertificate=false&useSSL=false
-    username: sa
-    password: '#QAZqaz12'
-    hikari:
-      pool-name: hikariCP
-      maximum-pool-size: 10
-      minimum-idle: 2
-      connection-timeout: 60000
-#    schema: classpath*:sql/schema.sql
-#    data: classpath*:sql/data.sql
+  application:
+    name: sb-jsmvc-spa
+  profiles:
+    active: prd
   jackson:
     serialization:
       fail-on-empty-beans: false
-#  cache:
-#    jcache:
-#      config: classpath:ehcache.xml
-logging:
-  level:
-    root: INFO
-    org.springframework: INFO
-    com.spa.demo: DEBUG
+
+#logging:
+#  level:
+#    root: INFO
+#    org.springframework: INFO
+#    com.spa.demo: DEBUG
