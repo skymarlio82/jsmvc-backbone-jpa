@@ -1,5 +1,7 @@
 package com.spa.demo;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -8,6 +10,7 @@ import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 public class Application {
+    private final Logger logger = LoggerFactory.getLogger(Application.class);
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
@@ -15,9 +18,8 @@ public class Application {
 
     @Bean
     public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
-        System.out.println("java.io.tmpdir = " + System.getProperty("java.io.tmpdir"));
         return args -> {
-
+            logger.info("java.io.tmpdir = {}", System.getProperty("java.io.tmpdir"));
         };
     }
 }

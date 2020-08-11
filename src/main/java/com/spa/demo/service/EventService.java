@@ -2,27 +2,28 @@ package com.spa.demo.service;
 
 import com.spa.demo.entity.Event;
 import com.spa.demo.repository.EventRepo;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Isolation;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-@Slf4j
 @Service
 public class EventService {
+    private final Logger logger = LoggerFactory.getLogger(EventService.class);
 
-    @Autowired
-    private EventRepo eventDao = null;
+    private final EventRepo eventRepo;
+
+    public EventService(EventRepo eventRepo) {
+        this.eventRepo = eventRepo;
+    }
 
     @Transactional(readOnly = true)
 //	@Cacheable(value="readAllEventsCache")
     public List<Event> readAllEvents() {
-        List<Event> eventList = eventDao.findAll();
-        log.debug("getAllEvents : size = " + eventList.size());
+        List<Event> eventList = eventRepo.findAll();
+        logger.debug("getAllEvents : size = {}", eventList.size());
         return eventList;
     }
 
@@ -30,42 +31,42 @@ public class EventService {
     public List<Event> readEventsByCategory(String category) {
         List<Event> res = null;
         if (category.equals("all")) {
-            res = eventDao.findAll();
+            res = eventRepo.findAll();
         } else {
-            res = eventDao.findByStatus(category);
+            res = eventRepo.findByStatus(category);
         }
-        log.debug("getEventsByCategory : category = " + category + ", size = " + res.size());
+        logger.debug("getEventsByCategory : category = {}, size = {}", category, res.size());
         return res;
     }
 
     @Transactional(readOnly = true)
     public Event readEventDetailByTitle(String title) {
-        return eventDao.findByTitle(title);
+        return eventRepo.findByTitle(title);
     }
 
-    @Transactional(readOnly = false, propagation = Propagation.REQUIRED, isolation = Isolation.DEFAULT)
+    @Transactional
     public Event updateEvent(Event event) {
-        log.debug("Before updating Event record from web request : " + event);
-        eventDao.saveAndFlush(event);
-        log.debug("After being updated Event record into DB : " + event);
+        logger.debug("Before updating Event record from web request : {}", event);
+        eventRepo.saveAndFlush(event);
+        logger.debug("After being updated Event record into DB : {}", event);
         return event;
     }
 
-    @Transactional(readOnly = false, propagation = Propagation.REQUIRED, isolation = Isolation.DEFAULT)
+    @Transactional
     public Event createEvent(Event event) {
-        log.debug("Before creating Event record from web request : " + event);
+        logger.debug("Before creating Event record from web request : {}", event);
         event.setStatus("Opening");
-        eventDao.save(event);
-        log.debug("After being created Event record into DB : " + event);
+        eventRepo.save(event);
+        logger.debug("After being created Event record into DB : {}", event);
         return event;
     }
 
-    @Transactional(readOnly = false, propagation = Propagation.REQUIRED, isolation = Isolation.DEFAULT)
+    @Transactional
     public Event deleteEvent(int id) {
-        Event event = eventDao.getOne(id);
-        log.debug("Before deleting Event record in DB : " + event);
-        eventDao.delete(event);
-        log.debug("After being deleted Event record from DB : " + event);
+        Event event = eventRepo.getOne(id);
+        logger.debug("Before deleting Event record in DB : {}", event);
+        eventRepo.delete(event);
+        logger.debug("After being deleted Event record from DB : {}", event);
         return event;
     }
 }
