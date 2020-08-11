@@ -38,7 +38,7 @@ public class ApiController {
     @ResponseBody
     @ApiOperation(value = "Get all the event entities.", notes = "Get all the event entities.")
     public List<Event> getAllEvents() {
-        logger.info("readAllEvents() is calling ...");
+        logger.debug("readAllEvents() is calling ...");
         return eventService.readAllEvents();
     }
 
@@ -48,7 +48,7 @@ public class ApiController {
     @ApiOperation(value = "Get the event entities by category.", notes = "Get the event entities by category.")
     public List<Event> getEventsByCategory(
         @ApiParam(value = "the event's category (i.e., all, Opening, Closed)", required = true) String category) {
-        logger.info("readEventsByCategory() is calling ...");
+        logger.debug("readEventsByCategory() is calling ...");
         return eventService.readEventsByCategory(category);
     }
 

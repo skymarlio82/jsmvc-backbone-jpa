@@ -1,46 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration debug="false">
-    <!--日志文件主目录：这里${user.home}为当前服务器用户主目录-->
-    <property name="LOG_HOME" value="${user.home}/log"/>
-    <!--日志文件名称：这里spring.application.name表示工程名称-->
-    <springProperty scope="context" name="APP_NAME" source="spring.application.name"/>
-    <!--引入默认配置-->
-    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
-    <!--引入配置控制台(CONSOLE)-->
-    <include resource="org/springframework/boot/logging/logback/console-appender.xml"/>
-    <!--配置日志文件(File)-->
-    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <!--设置策略-->
-        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <!--日志文件路径：这里%d{yyyyMMdd}表示按天分类日志-->
-            <FileNamePattern>${LOG_HOME}/%d{yyyyMMdd}/${APP_NAME}.log</FileNamePattern>
-            <!--日志保留天数-->
-            <MaxHistory>15</MaxHistory>
-        </rollingPolicy>
-        <!--设置格式-->
-        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
-            <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符-->
-            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n</pattern>
-            <charset>utf8</charset>
+    <conversionRule conversionWord="clr" converterClass="org.springframework.boot.logging.logback.ColorConverter"/>
+    <conversionRule conversionWord="wex" converterClass="org.springframework.boot.logging.logback.WhitespaceThrowableProxyConverter"/>
+    <conversionRule conversionWord="wEx" converterClass="org.springframework.boot.logging.logback.ExtendedWhitespaceThrowableProxyConverter"/>
+    <property name="CONSOLE_LOG_PATTERN" value="${CONSOLE_LOG_PATTERN:-%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}}"/>
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>info</level>
+        </filter>
+        <encoder>
+            <Pattern>${CONSOLE_LOG_PATTERN}</Pattern>
+            <charset>UTF-8</charset>
         </encoder>
-        <!--日志文件最大的大小-->
-        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
-            <MaxFileSize>100MB</MaxFileSize>
-        </triggeringPolicy>
     </appender>
-    <!-- 多环境配置 按照active profile选择分支 -->
+    <appender name="plumelog" class="com.plumelog.logback.appender.RedisAppender">
+        <appName>plumelog</appName>
+        <redisHost>127.0.0.1</redisHost>
+        <redisAuth>pass1234</redisAuth>
+        <redisPort>6379</redisPort>
+        <runModel>2</runModel>
+    </appender>
     <springProfile name="prd">
-        <!--root节点 全局日志级别，用来指定最基础的日志输出级别-->
-        <root level="INFO">
+        <root level="DEBUG">
             <appender-ref ref="CONSOLE"/>
+            <appender-ref ref="plumelog"/>
         </root>
-        <!-- 子节点向上级传递 局部日志级别-->
-        <logger level="DEBUG" name="org.hibernate.SQL">
-            <appender-ref ref="FILE"/>
-        </logger>
-        <logger level="DEBUG" name="com.spa.demo">
-            <appender-ref ref="FILE"/>
-        </logger>
+<!--        <logger level="DEBUG" name="org.hibernate.SQL">-->
+<!--            <appender-ref ref="plumelog"/>-->
+<!--        </logger>-->
+<!--        <logger level="DEBUG" name="com.spa.demo">-->
+<!--            <appender-ref ref="plumelog"/>-->
+<!--        </logger>-->
     </springProfile>
     <springProfile name="dev">
     </springProfile>
