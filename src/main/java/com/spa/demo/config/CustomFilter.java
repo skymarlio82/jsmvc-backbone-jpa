@@ -22,6 +22,7 @@ public class CustomFilter implements Filter {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)
         throws IOException, ServletException {
+        logger.info("doFilter ========== {}", TraceId.logTraceID.get());
         try {
             HttpServletRequest request = (HttpServletRequest) servletRequest;
             String traceId = request.getHeader("TraceId");
@@ -32,12 +33,12 @@ public class CustomFilter implements Filter {
             }
             filterChain.doFilter(servletRequest, servletResponse);
         } finally {
-
+            logger.info("finally doFilter ========== {}", TraceId.logTraceID.get());
         }
     }
 
     @Override
     public void destroy() {
-
+        logger.info("destroy ============");
     }
 }

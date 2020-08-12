@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class AspectConfig extends AbstractAspect {
 
-    @Around("within(com.spa.demo.api.controller..*))")
+    @Around("within(com.spa.demo..*))")
     public Object around(JoinPoint joinPoint) throws Throwable {
         return aroundExecute(joinPoint);
     }
